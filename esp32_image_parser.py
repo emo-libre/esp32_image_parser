@@ -182,7 +182,7 @@ def image2elf(filename, output_file, verbose=False):
     else:
         out_file = image_name + '.elf'
     print("\nWriting ELF to " + out_file + "...")
-    fd = os.open(out_file, os.O_WRONLY | os.O_CREAT | os.O_TRUNC | os.O_BINARY)
+    fd = os.open(out_file, os.O_WRONLY | os.O_CREAT | os.O_TRUNC | getattr(os, 'O_BINARY', 0))
     os.write(fd, bytes(elf))
     os.close(fd)
 
